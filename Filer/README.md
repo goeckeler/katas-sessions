@@ -21,11 +21,11 @@ Other | | | | |
  
 ## Coding
 
-There is an empty project to be cloned available on [https://github/goeckeler/katas/filer/kata](https://github/goeckeler/katas/filer/kata). Check out and either run gradlew or mvn in the root directory.
+There is an empty project to be cloned available on [https://github/goeckeler/katas/filer/kata](https://github/goeckeler/katas/filer/kata). Check out and either run `gradlew` or `mvn` in the root directory.
 
-The main package is "filer". There is a prepared main class and a pseudo test class available. The implementations for the different algorithms are supposed to be coded in the given packages. Simply inherit from the given "Filer" interface.
+The main package is "`filer`". There is a prepared main class and a pseudo test class available. The implementations for the different algorithms are supposed to be coded in the given packages. Simply inherit from the given "`Filer`" interface.
 
-If you opt for the FileReader implementation for example you could name your implementation filer.reader.ReaderFiler. If more than one pair opts for the same implementation feel free to name it whatever you like e.g. WickedReaderFiler.
+If you opt for the `FileReader` implementation for example you could name your implementation `filer.reader.ReaderFiler`. If more than one pair opts for the same implementation feel free to name it whatever you like e.g. `WickedReaderFiler`.
 
 In the end we will deploy the jar to the same server running the same scenarios for all implementations. The command line interface is pretty easy:
 

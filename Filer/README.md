@@ -21,7 +21,7 @@ Other | | | | |
  
 ## Coding
 
-There is an empty project to be cloned available on [https://github/goeckeler/katas/filer/kata](https://github/goeckeler/katas/filer/kata). Check out and `mvn` in the root directory.
+There is an empty project to be cloned available on [https://github/goeckeler/katas](https://github/goeckeler/katas). The kata in questions is under `/filer/kata`. Check out and `mvn` in the root directory.
 
 The main package is "`filer`". There is a prepared main class and a pseudo test class available. The implementations for the different algorithms are supposed to be coded in the given packages. Simply inherit from the given "`Filer`" interface.
 

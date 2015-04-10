@@ -29,5 +29,6 @@ If you opt for the `FileReader` implementation for example you could name your i
 
 In the end we will deploy the jar to the same server running the same scenarios for all implementations. The command line interface is pretty easy:
 
-`java -jar filer.jar <sourceDirectory> <targetDirectory>`
- 
+`java -jar filer-2.0.jar [--implementation=reader] <sourceDirectory> <targetDirectory>`
+
+In order to submit your solution you must build it with `mvn -P submit`. This will create a self-contained jar with all dependencies and create an archive `filer-2.0.zip` that you are supposed to provide. 

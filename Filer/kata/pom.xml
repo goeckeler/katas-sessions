@@ -1,22 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <groupId>com.goeckeler.katas</groupId>
   <artifactId>filer</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>2.0</version>
   <packaging>jar</packaging>
-  
+
   <name>kata.filer</name>
   <description>Kata for different file copy implementations.</description>
-  
+
   <url>https://github/goeckeler/katas/filer</url>
   <scm>
     <url>https://github.com/goeckeler/katas</url>
     <connection>scm:git:git@github.com:goeckeler/katas.git</connection>
     <developerConnection>scm:git:git@github.com:goeckeler/katas.git</developerConnection>
   </scm>
-  
+
   <!-- Global settings -->
   <properties>
     <!-- default JDK version to be used -->
@@ -26,7 +26,7 @@
     <target.jdk.version>${jdk.version}</target.jdk.version>
     <!-- source file encoding for all files -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  
+
     <!-- ************************************************************************ -->
     <!-- VERSIONS, SORTED ALPHABETICALLY -->
     <!-- ************************************************************************ -->
@@ -36,11 +36,11 @@
     <junit.version>4.12</junit.version>
     <junit.hamcrest.version>1.3</junit.hamcrest.version>
   </properties>
-  
+
   <build>
     <!-- most common used command to run maven, so you can just hit "mvn" instead of "mvn clean install" -->
     <defaultGoal>clean install</defaultGoal>
-    
+
     <plugins>
       <!-- compiler setup -->
       <plugin>
@@ -51,65 +51,6 @@
           <source>${source.jdk.version}</source>
           <target>${target.jdk.version}</target>
         </configuration>
-      </plugin>
-
-      <!-- also create *-sources.jar -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.4</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- also create *.javadoc.jar -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.2</version>
-        <configuration>
-          <encoding>${project.build.sourceEncoding}</encoding>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-docs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      
-      <!-- Fat jar with Maven Shade -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.3</version>
-        <executions>
-          <!-- Run shade goal on package phase -->
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <minimizeJar>true</minimizeJar>
-              <transformers>
-                <!-- add Main-Class to manifest file -->
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>filer.Application</mainClass>
-                </transformer>
-              </transformers>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
@@ -136,7 +77,7 @@
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>commons-cli</groupId>
       <artifactId>commons-cli</artifactId>
@@ -195,4 +136,76 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
+  <profiles>
+    <profile>
+      <!-- submit current version so it can be measured -->
+      <id>submit</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <!-- also create *-sources.jar -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>2.4</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- also create *.javadoc.jar -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.10.2</version>
+            <configuration>
+              <encoding>${project.build.sourceEncoding}</encoding>
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-docs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Fat jar with Maven Shade -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.3</version>
+            <executions>
+              <!-- Run shade goal on package phase -->
+              <execution>
+                <phase>package</phase>
+                <goals>
+                  <goal>shade</goal>
+                </goals>
+                <configuration>
+                  <minimizeJar>true</minimizeJar>
+                  <transformers>
+                    <!-- add Main-Class to manifest file -->
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                      <mainClass>filer.Application</mainClass>
+                    </transformer>
+                  </transformers>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

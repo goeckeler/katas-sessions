@@ -31,4 +31,4 @@ In the end we will deploy the jar to the same server running the same scenarios 
 
 `java -jar filer-2.0.jar [--implementation=reader] <sourceDirectory> <targetDirectory>`
 
-In order to submit your solution you must build it with `mvn -P submit`. This will create a self-contained jar with all dependencies and create an archive `filer-2.0.zip` that you are supposed to provide. 
+In order to submit your solution you must build it with `mvn -P submit`. This will create a self-contained jar with all dependencies and create an archive `filer-2.0-submit.zip` that you are supposed to provide. 

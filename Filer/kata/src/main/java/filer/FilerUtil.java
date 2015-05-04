@@ -1,5 +1,7 @@
 package filer;
 
+import static filer.TimeUtils.durationForHumans;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -46,6 +48,6 @@ public class FilerUtil
 
     final LocalDateTime endTime = LocalDateTime.now();
 
-    System.out.println("Copy took " + Duration.between(startTime, endTime).toString());
+    System.out.println("Copy took " + durationForHumans(Duration.between(startTime, endTime)));
   }
 }

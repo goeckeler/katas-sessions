@@ -11,9 +11,10 @@ import java.util.EnumSet;
 
 public class FilerUtil
 {
-  private static Filer filer = null;
+  private Filer filer = null;
+  private int depth = 1;
 
-  public static void copy(final String sourceDirectory, final String targetDirectory)
+  public void copy(final String sourceDirectory, final String targetDirectory)
     throws IOException
   {
     final Path sourcePath = FileSystems.getDefault().getPath(sourceDirectory);
@@ -21,7 +22,7 @@ public class FilerUtil
 
     final LocalDateTime startTime = LocalDateTime.now();
 
-    Files.walkFileTree(sourcePath, EnumSet.noneOf(FileVisitOption.class), 1, new SimpleFileVisitor<Path>()
+    Files.walkFileTree(sourcePath, EnumSet.noneOf(FileVisitOption.class), depth, new SimpleFileVisitor<Path>()
     {
       @Override
       public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs)
@@ -47,7 +48,16 @@ public class FilerUtil
     });
 
     final LocalDateTime endTime = LocalDateTime.now();
-
     System.out.println("Copy took " + durationForHumans(Duration.between(startTime, endTime)));
+  }
+
+  public FilerUtil withFiler(final Filer filer) {
+    this.filer = filer;
+    return this;
+  }
+
+  public FilerUtil depth(final Integer maximumDepth) {
+    this.depth = (maximumDepth == null ? 0 : maximumDepth);
+    return this;
   }
 }

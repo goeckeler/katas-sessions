@@ -30,6 +30,6 @@ public class FilerTest
     filer.copy(sourceFile.toPath(), targetFile.toPath());
 
     assertTrue("Source file does not exist after copy", sourceFile.exists());
-    assertTrue("Target file does not exist after copy", sourceFile.exists());
+    assertTrue("Target file does not exist after copy", targetFile.exists());
   }
 }

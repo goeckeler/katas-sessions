@@ -51,13 +51,13 @@ public class FilerUtil
     System.out.println("Copy took " + durationForHumans(Duration.between(startTime, endTime)));
   }
 
-  public FilerUtil withFiler(final Filer filer) {
+  public FilerUtil withAlgorithm(final Filer filer) {
     this.filer = filer;
     return this;
   }
 
-  public FilerUtil depth(final Integer maximumDepth) {
-    this.depth = (maximumDepth == null ? 0 : maximumDepth);
+  public FilerUtil includeFolderLevels(final Integer maximumDepth) {
+    this.depth = (maximumDepth == null || maximumDepth <= 0 ? Integer.MAX_VALUE : maximumDepth);
     return this;
   }
 }

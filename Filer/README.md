@@ -1,5 +1,4 @@
 # Codes faster, runs faster, easier to adapt ...
-
 ----------
 
 + Language: Java

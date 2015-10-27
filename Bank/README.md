@@ -1,5 +1,4 @@
 # London School Kata
- ----------
   
 + Language: Any with a mocking framework, e.g. Java, Scala, PHP, C# or Go
 + Level: Easy

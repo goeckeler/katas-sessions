@@ -7,6 +7,10 @@ Source
 
 01/10/2015 • rafal.borowiec • Software
 
+Disclaimer
+----------
+Apart from some formatting this is the complete work of Rafal Borowiec who reserves all rights. Please ask him if you want to use this article in part or in full. See above for details.
+
 Abstract
 --------
 
@@ -54,13 +58,13 @@ public class Thrower {
     }
 ```
 
-All examples can be found in my [GitHub](https://github.com/kolorobot/unit-testing-demo/tree/master/src/test/java/com/github/kolorobot/exceptions "GitHub") repository.
+All examples can be found in Rafal Borowiec's [GitHub](https://github.com/kolorobot/unit-testing-demo/tree/master/src/test/java/com/github/kolorobot/exceptions "GitHub") repository.
 
 A bit of history
 ----------------
 
 In JUnit 3 and in JUnit 4 − before `ExpectedException` rule was introduced − the best way to test exceptions was by using standard classical `try-catch` idiom in a unit test:
-	
+
 ```java
 @Test
 public void throwsException() {
@@ -160,7 +164,7 @@ In the below example, we verify the type and message of an exception.
 public void verifiesTypeAndMessage() {
     thrown.expect(MyRuntimeException.class);
     thrown.expectMessage("My custom runtime exception");
- 
+
     thrower.throwsRuntime();
 }
 ```
@@ -168,7 +172,7 @@ public void verifiesTypeAndMessage() {
 If the expected exception is not thrown a valid assertion error will be thrown by JUnit with a descriptive message:
 
 ```java
-java.lang.AssertionError: 
+java.lang.AssertionError:
 Expected: (an instance of c.g.k.e.MyRuntimeException and exception with message a string containing "My custom runtime exceptions")
      but: exception with message a string containing "Something else" message was "My custom runtime exception"
 ```
@@ -180,7 +184,7 @@ As you may see, the code is much more readable. We are also sure that if other t
 public void throwsDifferentExceptionThanExpected() throws MyCheckedException {
     thrown.expect(MyCheckedException.class);
     thrown.expectMessage("Expected exception to be thrown");
- 
+
     thrower.throwsRuntimeInsteadOfChecked();
 }
 ```
@@ -188,7 +192,7 @@ public void throwsDifferentExceptionThanExpected() throws MyCheckedException {
 and it will fail with a message:
 
 ```java
-java.lang.AssertionError: 
+java.lang.AssertionError:
 Expected: (an instance of c.g.k.e.MyCheckedException and exception with message a string containing "Expected exception to be thrown")
      but: an instance of c.g.k.e.MyCheckedException  is a c.g.k.e.MyRuntimeException
 ```
@@ -200,7 +204,7 @@ And if there is no exception thrown:
 public void doesNotThrowExpectedException() {
     thrown.expect(MyRuntimeException.class);
     // the below line is optional
-    thrown.reportMissingExceptionWithMessage("No exception of %s thrown"); 
+    thrown.reportMissingExceptionWithMessage("No exception of %s thrown");
 }
 ```
 
@@ -231,12 +235,12 @@ public void verifiesMessageStartsWith() {
 ```
 We can verify the cause with a custom Hamcrest matchers:
 
-```java	
+```java
 @Test
 public void verifiesCauseTypeAndAMessage() {
     thrown.expect(RuntimeException.class);
     thrown.expectCause(new MyCauseMatcher(IllegalStateException.class, "Illegal state"));
- 
+
     thrower.throwsRuntimeWithCause();
 }
 ```
@@ -247,19 +251,19 @@ whereas MyCauseMatcher is as follows:
 class MyCauseMatcher extends TypeSafeMatcher {
     private final Class<? extends Throwable> expectedType;
     private final String expectedMessage;
- 
-    public MyCauseMatcher(Class<? extends Throwable> expectedType, 
+
+    public MyCauseMatcher(Class<? extends Throwable> expectedType,
                             String expectedMessage) {
         this.expectedType = expectedType;
         this.expectedMessage = expectedMessage;
     }
- 
+
     @Override
     protected boolean matchesSafely(Throwable item) {
         return item.getClass().isAssignableFrom(expectedType)
             &amp;&amp; item.getMessage().contains(expectedMessage);
     }
- 
+
     @Override
     public void describeTo(Description description) {
         description.appendText("expects type ")
@@ -309,10 +313,10 @@ AssertJ also supports a so called *AAA* style, if you wish to distinguish act an
 public void aaaStyle() {
     // arrange
     Thrower Thrower = new Thrower();
- 
+
     // act
     Throwable throwable = catchThrowable(Thrower::throwsRuntime);
- 
+
     // assert
     assertThat(throwable)
             .isNotNull()

@@ -221,3 +221,4 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 Filer/kata/dependency-reduced-pom.xml
+Exception Testing/Kata/dependency-reduced-pom.xml

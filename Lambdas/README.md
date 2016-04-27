@@ -20,3 +20,7 @@ This kata focusses on how you would use Lambdas and Streams in everyday use thro
 ### Labs
 
 This is a technical kata originally run in a JFokus 2015  session ([http://www.jfokus.se/](http://www.jfokus.se/)). Starting easy it gets deeps into what you can do with lambdas and streams from a technical point, but keep in mind - it will make you think about the edges when not to use these features.
+
+### Speed
+
+This is a demo, not a kata. But you can make it a kata about how to perform microbenching. It simply searches a list for the first matching item, in sequential functional style, in parallel functional style, and in a classical for loop. Go and find out which is really the fastest and when.

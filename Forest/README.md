@@ -1,0 +1,1 @@
+Create an API for trees. Well, actually a forest, as you might have many trees on top level. The tree could represent a file hierarchy, configuration items, and so on. However, the ultimate goal is to compare forests and trees, merge them, update them, delete branches, filter nodes, and so on.

@@ -220,5 +220,17 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+#############
+## Specific exclusions
+#############
+
 Filer/kata/dependency-reduced-pom.xml
 Exception Testing/Kata/dependency-reduced-pom.xml
+
+Mäxle/mia-on-a-stick/echo/\.gradle/
+Mäxle/mia-on-a-stick/echo/client/\.gradle/
+Mäxle/mia-on-a-stick/echo/server/\.gradle/
+Mäxle/mia-on-a-stick/echo/\.gradle/
+Mäxle/mia-on-a-stick/mia/clients/java-advanced-bot/\.gradle/

@@ -9,7 +9,7 @@
 	"files": ["bin", "lib", "package.json"],
 	"dependencies": {
 		"coffee-script": "1.1.x",
-		"node-uuid": "1.2.x"
+		"node-uuid": "1.4.x"
 	},
 	"devDependencies": {
 		"jasmine-node": "1.0.8"

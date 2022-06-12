@@ -1,3 +1,6 @@
+package kata;
+
+import static kata.FizzBuzz.fizzBuzz;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,16 +33,5 @@ class FizzBuzzParameterizedTest
   })
   void testCalls(int input, String output, String hint) {
     assertEquals(output, fizzBuzz(input));
-  }
-
-  private String fizzBuzz(int integer) {
-    String shout = "";
-    if (integer <= 0) return shout;
-
-    if (integer % 3 == 0) shout += "fizz";
-    if (integer % 5 == 0) shout += "buzz";
-    if (shout.isEmpty()) shout += integer;
-
-    return shout;
   }
 }

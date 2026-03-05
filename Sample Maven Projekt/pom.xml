@@ -31,7 +31,6 @@
     <!-- VERSIONS, SORTED ALPHABETICALLY -->
     <!-- ************************************************************************ -->
     <args4j.version>2.37</args4j.version>
-    <!-- use 3.2.0 for Java 8 projects and 2.2.0 for all other projects -->
     <assertj.version>3.27.7</assertj.version>
     <commons.lang.version>3.20.0</commons.lang.version>
     <commons.collections.version>4.5.0</commons.collections.version>
@@ -83,7 +82,7 @@
                 <requireMavenVersion>
                   <version>3.9.0</version>
                 </requireMavenVersion>
-              </rules>    
+              </rules>
             </configuration>
           </execution>
         </executions>

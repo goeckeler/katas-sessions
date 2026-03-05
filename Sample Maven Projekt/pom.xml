@@ -30,15 +30,14 @@
     <!-- ************************************************************************ -->
     <!-- VERSIONS, SORTED ALPHABETICALLY -->
     <!-- ************************************************************************ -->
-    <args4j.version>2.32</args4j.version>
-    <!-- use 3.2.0 for Java 8 projects and 2.2.0 for all other projects -->
-    <assertj.version>3.2.0</assertj.version>
-    <commons.lang.version>3.18.0</commons.lang.version>
-    <commons.collections.version>4.1</commons.collections.version>
-    <commons.io.version>2.14.0</commons.io.version>
+    <args4j.version>2.37</args4j.version>
+    <assertj.version>3.27.7</assertj.version>
+    <commons.lang.version>3.20.0</commons.lang.version>
+    <commons.collections.version>4.5.0</commons.collections.version>
+    <commons.io.version>2.21.0</commons.io.version>
 	<javaslang.version>2.0.0-RC4</javaslang.version>
-    <junit.version>4.13.1</junit.version>
-    <junit.hamcrest.version>1.3</junit.hamcrest.version>
+    <junit.version>4.13.2</junit.version>
+    <junit.hamcrest.version>3.0</junit.hamcrest.version>
     <mockito.version>1.10.19</mockito.version>
   </properties>
 
@@ -56,6 +55,37 @@
           <source>${source.jdk.version}</source>
           <target>${target.jdk.version}</target>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.13.0</version>
+        <configuration>
+          <!-- do not upgrade to early access versions -->
+          <ignoredVersions>(?i).*-(alpha|beta|m|rc|ea)([-.]?\d+)?</ignoredVersions>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.6.2</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>3.9.0</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
@@ -79,13 +109,13 @@
       <artifactId>assertj-core</artifactId>
       <scope>test</scope>
     </dependency>
-    
+
     <dependency>
 	    <groupId>org.mockito</groupId>
 	    <artifactId>mockito-all</artifactId>
       <scope>test</scope>
     </dependency>
-    
+
 	<!-- Apache utility libraries -->
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -96,12 +126,12 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-collections4</artifactId>
 	</dependency>
-	
+
 	<!-- JavaSlang Java8 sugar -->
     <dependency>
       <groupId>com.javaslang</groupId>
       <artifactId>javaslang</artifactId>
-    </dependency>	  
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
@@ -118,7 +148,7 @@
 	      <artifactId>commons-collections4</artifactId>
 	      <version>${commons.collections.version}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
@@ -137,7 +167,7 @@
         <groupId>com.javaslang</groupId>
         <artifactId>javaslang</artifactId>
         <version>${javaslang.version}</version>
-      </dependency>	  
+      </dependency>
 
       <!-- Testing -->
       <dependency>
